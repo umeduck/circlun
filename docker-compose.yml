@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - ./api:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: myapp_development
+
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+    ports:
+      - "8080:8080"
+
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
