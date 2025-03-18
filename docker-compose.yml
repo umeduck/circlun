@@ -31,7 +31,7 @@ services:
     container_name: mysql
     restart: always
     ports:
-      - "3306:3306"
+      - "3307:3307"
     environment:
       MYSQL_ROOT_PASSWORD: password
     volumes:
