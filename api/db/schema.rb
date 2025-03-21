@@ -12,22 +12,22 @@
 
 ActiveRecord::Schema[7.0].define(version: 2025_03_18_144250) do
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
-    t.string "provider", default: "email", null: false
-    t.string "uid", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.boolean "allow_password_change", default: false
-    t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.string "name"
-    t.string "nickname"
-    t.string "email"
-    t.string "position"
-    t.text "tokens"
+    t.string "provider", default: "email", null: false, comment: "認証プロバイダー（デフォルト: email）"
+    t.string "uid", default: "", null: false, comment: "ユーザーの一意な識別子"
+    t.string "encrypted_password", default: "", null: false, comment: "ハッシュ化されたパスワード"
+    t.string "reset_password_token", comment: "パスワードリセット用の一時トークン"
+    t.datetime "reset_password_sent_at", comment: "パスワードリセットメールを送った日時"
+    t.boolean "allow_password_change", default: false, comment: "パスワード変更許可フラグ"
+    t.datetime "remember_created_at", comment: "ログイン状態を維持するための記録日時"
+    t.string "confirmation_token", comment: "メール確認用の一時トークン"
+    t.datetime "confirmed_at", comment: "メール確認完了日時"
+    t.datetime "confirmation_sent_at", comment: "確認メールを送信した日時"
+    t.string "unconfirmed_email", comment: "メールアドレス変更時の未確認メールアドレス"
+    t.string "name", comment: "ユーザーの名前"
+    t.string "nickname", comment: "ユーザーのニックネーム"
+    t.string "email", comment: "ユーザーのメールアドレス"
+    t.string "position", comment: "ユーザーのポジション"
+    t.text "tokens", comment: "ユーザー認証トークン（複数デバイス対応）"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

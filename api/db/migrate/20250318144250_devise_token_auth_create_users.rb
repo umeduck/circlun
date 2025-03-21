@@ -44,5 +44,23 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[7.0]
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
+
+    # 各カラムにコメントを追加
+    change_column_comment :users, :provider, "認証プロバイダー（デフォルト: email）"
+    change_column_comment :users, :uid, "ユーザーの一意な識別子"
+    change_column_comment :users, :encrypted_password, "ハッシュ化されたパスワード"
+    change_column_comment :users, :reset_password_token, "パスワードリセット用の一時トークン"
+    change_column_comment :users, :reset_password_sent_at, "パスワードリセットメールを送った日時"
+    change_column_comment :users, :allow_password_change, "パスワード変更許可フラグ"
+    change_column_comment :users, :remember_created_at, "ログイン状態を維持するための記録日時"
+    change_column_comment :users, :confirmation_token, "メール確認用の一時トークン"
+    change_column_comment :users, :confirmed_at, "メール確認完了日時"
+    change_column_comment :users, :confirmation_sent_at, "確認メールを送信した日時"
+    change_column_comment :users, :unconfirmed_email, "メールアドレス変更時の未確認メールアドレス"
+    change_column_comment :users, :name, "ユーザーの名前"
+    change_column_comment :users, :nickname, "ユーザーのニックネーム"
+    change_column_comment :users, :email, "ユーザーのメールアドレス"
+    change_column_comment :users, :position, "ユーザーのポジション"
+    change_column_comment :users, :tokens, "ユーザー認証トークン（複数デバイス対応）"
   end
 end

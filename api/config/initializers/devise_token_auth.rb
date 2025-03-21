@@ -50,6 +50,8 @@ DeviseTokenAuth.setup do |config|
     :'uid' => 'uid',
     :'token-type' => 'token-type'
   }
+  config.require_client_password_reset_token = false
+
 
   # Makes it possible to use custom uid column
   # config.other_uid = "foo"
