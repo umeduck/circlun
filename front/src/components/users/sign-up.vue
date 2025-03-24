@@ -52,6 +52,7 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import { useUserStore } from '@/stores/userStore'
 
 // routerのインスタンスを作成
 const router = useRouter()
@@ -64,6 +65,8 @@ const form = reactive({
   password: 'testtest',
   password_confirmation: 'testtest'
 })
+
+const userStore = useUserStore()
 
 // バリデーションルール
 const rules = {
@@ -107,7 +110,8 @@ const submitForm = () => {
         })
         .then((response) => {
           console.log('登録成功:', response.data);
-          alert('登録成功！');
+          userStore.setUser(response.data)
+          router.push('/')
         })
         .catch((error) => {
           console.error('登録失敗:', error.response.data);
