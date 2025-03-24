@@ -49,10 +49,11 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, h } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { useUserStore } from '@/stores/userStore'
+import { ElNotification } from 'element-plus'
 
 // routerのインスタンスを作成
 const router = useRouter()
@@ -111,6 +112,7 @@ const submitForm = () => {
         .then((response) => {
           console.log('登録成功:', response.data);
           userStore.setUser(response.data)
+          ElNotification({ message: h('i', { style: 'color: teal' }, '登録が完了しました'),})
           router.push('/')
         })
         .catch((error) => {
