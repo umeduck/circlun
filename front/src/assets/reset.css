@@ -1,0 +1,50 @@
+/* reset.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* リストのスタイル解除 */
+ul, ol {
+  list-style: none;
+}
+
+/* リンクの装飾解除 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 見出しと段落の余白解除 */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* フォーム要素のデフォルトスタイル解除 */
+button, input, textarea {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* 画像のはみ出し防止 */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* テーブルのスタイル調整 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
