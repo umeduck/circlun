@@ -1,15 +1,26 @@
 <template>
   <el-main>
-    <el-form :model="form" :rules="rules" ref="formRef" label-width="auto">
+    <el-form
+      ref="formRef"
+      :model="form"
+      :rules="rules"
+      label-width="auto"
+    >
       <!-- メールアドレス -->
-      <el-form-item label="メールアドレス" prop="email">
+      <el-form-item
+        label="メールアドレス"
+        prop="email"
+      >
         <el-input
           v-model="form.email"
           placeholder="メールアドレスを入力"
         />
       </el-form-item>
       <!-- パスワード -->
-      <el-form-item label="パスワード" prop="password">
+      <el-form-item
+        label="パスワード"
+        prop="password"
+      >
         <el-input
           v-model="form.password"
           type="password"
@@ -18,8 +29,18 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">ログイン</el-button>
-        <el-button type="primary" @click="toTop">Topへ戻る</el-button>
+        <el-button
+          type="primary"
+          @click="submitForm"
+        >
+          ログイン
+        </el-button>
+        <el-button
+          type="primary"
+          @click="toTop"
+        >
+          Topへ戻る
+        </el-button>
       </el-form-item>
     </el-form>
   </el-main>

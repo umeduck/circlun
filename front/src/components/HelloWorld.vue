@@ -1,24 +1,12 @@
 <template>
-  <h1>test</h1>
-  <el-button>Default</el-button>
-  {{ !userStore.isLoggedIn }}
-  <div v-if="!userStore.isLoggedIn">
-    <router-link to="/signup">新規登録</router-link>
-  </div>
-  <div v-if="!userStore.isLoggedIn">
-    <router-link to="/login">ログイン</router-link>
-  </div>
-  <div v-if="userStore.isLoggedIn">
-    <el-button type="primary" @click="logout">ログアウト</el-button>
-  </div>
+  <el-container>
+    <h1>test</h1>
+    <router-link to="/circles/new">
+      サークル新規作成
+    </router-link>
+  </el-container>
 </template>
 
 <script setup>
-import { useUserStore } from '@/stores/userStore'
 
-const userStore = useUserStore()
-
-const logout = () => {
-  userStore.logout()
-}
 </script>

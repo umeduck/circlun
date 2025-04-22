@@ -1,12 +1,38 @@
 <template>
   <el-container>
     <el-header>
-      <div class="logo">さーくるん</div>
-      <el-menu mode="horizontal" background-color="#409EFF" text-color="#fff" active-text-color="#ffd04b" router>
-        <el-menu-item index="/">Home</el-menu-item>
-        <el-menu-item index="/signup" v-show="!userStore.isLoggedIn">新規登録</el-menu-item>
-        <el-menu-item index="/login" v-show="!userStore.isLoggedIn">ログイン</el-menu-item>
-        <el-menu-item index="#" @click="logout" v-show="userStore.isLoggedIn">ログアウト</el-menu-item>
+      <div class="logo">
+        さーくるん
+      </div>
+      <el-menu
+        mode="horizontal"
+        background-color="#409EFF"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+        router
+      >
+        <el-menu-item index="/">
+          Home
+        </el-menu-item>
+        <el-menu-item
+          v-show="!userStore.isLoggedIn"
+          index="/signup"
+        >
+          新規登録
+        </el-menu-item>
+        <el-menu-item
+          v-show="!userStore.isLoggedIn"
+          index="/login"
+        >
+          ログイン
+        </el-menu-item>
+        <el-menu-item
+          v-show="userStore.isLoggedIn"
+          index="#"
+          @click="logout"
+        >
+          ログアウト
+        </el-menu-item>
       </el-menu>
     </el-header>
   </el-container>

@@ -1,29 +1,46 @@
 <template>
   <el-main>
-    <el-form :model="form" :rules="rules" ref="formRef" label-width="auto">
+    <el-form
+      ref="formRef"
+      :model="form"
+      :rules="rules"
+      label-width="auto"
+    >
       <!-- 名前 -->
-      <el-form-item label="名前" porp="name">
+      <el-form-item
+        label="名前"
+        porp="name"
+      >
         <el-input
           v-model="form.name"
           placeholder="名前を入力"
         />
       </el-form-item>
       <!-- メールアドレス -->
-      <el-form-item label="メールアドレス" prop="email">
+      <el-form-item
+        label="メールアドレス"
+        prop="email"
+      >
         <el-input
           v-model="form.email"
           placeholder="メールアドレスを入力"
         />
       </el-form-item>
       <!-- ポジション -->
-      <el-form-item label="ポジション" prop="position">
+      <el-form-item
+        label="ポジション"
+        prop="position"
+      >
         <el-input
-         v-model="form.position"
-         placeholder="ポジションを入力"
+          v-model="form.position"
+          placeholder="ポジションを入力"
         />
       </el-form-item>
       <!-- パスワード -->
-      <el-form-item label="パスワード" prop="password">
+      <el-form-item
+        label="パスワード"
+        prop="password"
+      >
         <el-input
           v-model="form.password"
           type="password"
@@ -32,7 +49,10 @@
         />
       </el-form-item>
       <!-- パスワード(確認) -->
-      <el-form-item label="パスワード確認" prop="password_confirmation">
+      <el-form-item
+        label="パスワード確認"
+        prop="password_confirmation"
+      >
         <el-input
           v-model="form.password_confirmation"
           type="password"
@@ -41,8 +61,18 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">登録</el-button>
-        <el-button type="primary" @click="toTop">Topへ戻る</el-button>
+        <el-button
+          type="primary"
+          @click="submitForm"
+        >
+          登録
+        </el-button>
+        <el-button
+          type="primary"
+          @click="toTop"
+        >
+          Topへ戻る
+        </el-button>
       </el-form-item>
     </el-form>
   </el-main>
