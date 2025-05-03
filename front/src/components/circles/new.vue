@@ -130,13 +130,12 @@
   </el-main>
 </template>
 <script setup>
-import { reactive, ref, computed } from 'vue'
-import axios from 'axios'
-import { useUserStore } from '@/stores/userStore'
-// import { storeToRefs } from 'pinia'
+import { reactive, ref, computed, h } from 'vue'
+import { ElNotification } from 'element-plus'
+import { useRouter } from 'vue-router'
+import api from '@/libs/api'
 
-const userStore = useUserStore()
-// const userId  = storeToRefs(userStore)
+const router = useRouter()
 
 const form = computed(() => [
   { label: formLabel.name, value: formValue.name },
@@ -163,24 +162,25 @@ const formValue = reactive({
   name: '名前',
   kind: '種類',
   objective: '目的',
-  avg_age: '平均年齢',
-  count: '12',
+  avg_age: 24,
+  count: 12,
   prefectures: '1',
-  foundation_years: '2000',
+  foundation_years: 2000,
   note: '備考',
 })
 
 const showDialog = ref(false)
 function openConfirmDialog () {
   showDialog.value = true
-  console.log(userStore.$state.user.data.id)
 }
 const submitForm = async () => {
-  const url = `${process.env.VUE_APP_BASE_URL_V1}circles`
   try {
-    const response = await axios.post(url, formValue)
+    const response = await api.post('circles', formValue)
     console.log(response.data)
+    ElNotification({ message: h('i', { style: 'color: teal' }, 'サークル登録完了しました'),})
+    router.push('/')
   } catch (error) {
+    ElNotification({ message: h('i', { style: 'color: teal' }, 'サークル登録に失敗しました'),})
     console.error('エラー:', error.response?.data || error.message)
   }
 }
@@ -188,7 +188,7 @@ const submitForm = async () => {
 <style scoped>
 .main-content {
   max-width: 800px;
-  margin: 10px auto; /* 中央揃え */
+  margin: 10px auto;
   padding: 0 150px;
   text-align: center;
 }

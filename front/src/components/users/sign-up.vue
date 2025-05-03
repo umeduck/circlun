@@ -141,7 +141,7 @@ const submitForm = () => {
         })
         .then((response) => {
           console.log('登録成功:', response.data);
-          userStore.setUser(response.data)
+          userStore.setUser(response)
           ElNotification({ message: h('i', { style: 'color: teal' }, '登録が完了しました'),})
           router.push('/')
         })

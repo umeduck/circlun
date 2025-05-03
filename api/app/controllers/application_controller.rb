@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+    include RackSessionFix
     include DeviseTokenAuth::Concerns::SetUserByToken
 
     # CSRF保護を明示的に追加

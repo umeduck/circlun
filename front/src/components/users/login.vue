@@ -75,7 +75,7 @@ const submitForm = () => {
         })
         .then((response) => {
           console.log('ログイン成功:', response.data);
-          userStore.setUser(response.data)
+          userStore.setUser(response)
           ElNotification({ message: h('i', { style: 'color: teal' }, 'ログインが成功しました'),})
           router.push('/')
         })
