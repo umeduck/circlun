@@ -1,12 +1,12 @@
 class Api::V1::CirclesController < ApplicationController
   before_action :authenticate_api_v1_user!
   def create
-    circle = CircleManager.new(circle_params)
+    circle = Circle.new(circle_params)
     membership = nil
     ActiveRecord::Base.transaction do
       circle.save!
       membership = Membership.new(
-        circle_manager_id: circle.id,
+        circle_id: circle.id,
         user_id: current_api_v1_user.id,
         role: 1
       )
@@ -17,7 +17,7 @@ class Api::V1::CirclesController < ApplicationController
     render status: :created
   rescue => e
     logger.error "[CREATE ERROR] #{e.class} - #{e.message}"
-    logger.error "Circle errors: #{circle.errors.full_messages}"
+    logger.error "circle errors: #{circle&.errors&.full_messages || 'circle is nil'}"
     logger.error "Membership errors: #{membership&.errors&.full_messages || 'membership is nil'}"
     render json: { error: e.message }, status: :unprocessable_entity
   end

@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_19_123637) do
-  create_table "circle_managers", charset: "utf8mb3", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2025_05_05_063232) do
+  create_table "circles", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false, comment: "サークル名"
     t.integer "avg_age", null: false, comment: "平均年齢"
     t.string "kind", null: false, comment: "種別"
@@ -26,11 +26,11 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_19_123637) do
 
   create_table "memberships", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false, comment: "userテーブルid"
-    t.bigint "circle_manager_id", null: false, comment: "circle_managerテーブルid"
+    t.bigint "circle_id", null: false, comment: "circleテーブルid"
     t.string "role", comment: "権限 1.管理者 2.チームメンバー 3.体験者"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["circle_manager_id"], name: "index_memberships_on_circle_manager_id"
+    t.index ["circle_id"], name: "index_memberships_on_circle_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
@@ -59,6 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_19_123637) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "memberships", "circle_managers"
+  add_foreign_key "memberships", "circles"
   add_foreign_key "memberships", "users"
 end

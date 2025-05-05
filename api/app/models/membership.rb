@@ -1,4 +1,4 @@
 class Membership < ApplicationRecord
   belongs_to :user
-  belongs_to :circle_manager
+  belongs_to :circle
 end

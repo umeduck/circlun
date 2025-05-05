@@ -1,6 +1,6 @@
-class CreateCircleManagers < ActiveRecord::Migration[7.0]
+class CreateCircles < ActiveRecord::Migration[7.0]
   def change
-    create_table :circle_managers do |t|
+    create_table :circles do |t|
       t.string :name, null: false, comment: 'サークル名'
       t.integer :avg_age, null: false, comment: '平均年齢'
       t.string :kind, null: false, comment: '種別'
