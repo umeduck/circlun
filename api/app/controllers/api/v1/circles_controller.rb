@@ -8,14 +8,14 @@ class Api::V1::CirclesController < ApplicationController
       membership = Membership.new(
         circle_id: circle.id,
         user_id: current_api_v1_user.id,
-        role: 1
+        role: "1"
       )
       logger.info "circle.id: #{circle.id}"
       logger.info "user.id: #{current_api_v1_user.id}"
       membership.save!
     end
     render status: :created
-  rescue => e
+  rescue ActiveRecord::RecordInvalid => e
     logger.error "[CREATE ERROR] #{e.class} - #{e.message}"
     logger.error "circle errors: #{circle&.errors&.full_messages || 'circle is nil'}"
     logger.error "Membership errors: #{membership&.errors&.full_messages || 'membership is nil'}"
