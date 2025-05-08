@@ -8,7 +8,7 @@ class Api::V1::CirclesController < ApplicationController
       membership = Membership.new(
         circle_id: circle.id,
         user_id: current_api_v1_user.id,
-        role: "1"
+        role: 1
       )
       logger.info "circle.id: #{circle.id}"
       logger.info "user.id: #{current_api_v1_user.id}"

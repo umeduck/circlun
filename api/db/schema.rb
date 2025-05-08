@@ -27,10 +27,11 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_05_063232) do
   create_table "memberships", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false, comment: "userテーブルid"
     t.bigint "circle_id", null: false, comment: "circleテーブルid"
-    t.string "role", comment: "権限 1.管理者 2.チームメンバー 3.体験者"
+    t.integer "role", default: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["circle_id"], name: "index_memberships_on_circle_id"
+    t.index ["user_id", "circle_id"], name: "index_memberships_on_user_id_and_circle_id", unique: true
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 

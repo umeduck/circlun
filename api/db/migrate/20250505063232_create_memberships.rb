@@ -3,7 +3,7 @@ class CreateMemberships < ActiveRecord::Migration[7.0]
     create_table :memberships do |t|
       t.references :user, null: false, foreign_key: true, comment: 'userテーブルid'
       t.references :circle, null: false, foreign_key: true, comment: 'circleテーブルid'
-      t.string :role, comment: '権限 1.管理者 2.チームメンバー 3.体験者'
+      t.integer :role, null: false, default: 2
 
       t.timestamps
     end
