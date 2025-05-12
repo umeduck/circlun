@@ -2,7 +2,7 @@
   <el-container>
     <el-header>
       <div class="logo">
-        さーくるん
+        さーくる
       </div>
       <el-menu
         mode="horizontal"
